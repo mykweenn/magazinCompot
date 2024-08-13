@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlayList</title>
+  </head>
+
+  <body>
+    <header>{% include 'header.html' %}</header>
+
+    <main>
+      <h1 class="text-center fw-bold my-4">Новое видео</h1>
+      <form class="d-flex flex-column gap-2 mx-auto" style="max-width: 300px">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Название"
+          name="title"
+        />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Код вставки"
+          name="embed_code"
+        />
+
+        <button
+          style="max-width: 90%; min-width: 200px"
+          class="btn btn-danger mx-auto my-2"
+          type="submit"
+        >
+          Добавить
+        </button>
+      </form>
+    </main>
+
+    <footer>{% include 'footer.html' %}</footer>
+  </body>
+</html>

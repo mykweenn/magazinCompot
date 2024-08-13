@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayList</title>
+</head>
+
+<body>
+    <header>
+        {% include 'header.html' %}
+    </header>
+
+    <main>
+        {% for video in videos %}
+        <div class="card rounded-top-3 border-5 border-secondary bg-dark" style="width: 275px;">
+            <iframe class="rounded-top-3" src="https://www.youtube.com/embed/{{ video.embed_code }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <div class="card-body">
+                <h5 class="card-title text-light">{{ video.title }}</h5>
+                <p class="card-text text-secondary">{{ video.created_at }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+
+</html>

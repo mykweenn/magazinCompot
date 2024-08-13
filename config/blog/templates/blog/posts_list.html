@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Посты</title>
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}" />
+  </head>
+  <body class="bg-dark">
+    
+    {% include 'header.html' %}
+    
+    <main>
+      <h1 class="text-light text-center fw-bold">Посты</h1>
+      <div
+        class="posts_container d-flex gap-3 flex-wrap justify-content-center mx-auto"
+      >
+        {% for post in posts %} 
+        {% if post.is_published == True %}
+        <div class="card" style="width: 250px">
+          <img src="{{ post.image.url }}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.text }}</p>
+            <form action="{% url 'post_like' %}" method="post" class="d-flex flex-row">
+              {% csrf_token %}
+              <input type="hidden" name="post_id" value="{{ post.id }}" />
+              <button type="submit" class="bg-transparent border-0">
+                <img
+                  height="30"
+                  width="30"
+                  src="{% static 'blog/like.png' %}"
+                />
+              </button>
+              <span class="text-secondary">{{ post.likes }}</span>
+            </form>
+          </div>
+        </div>
+        {% endif %} 
+        {% endfor %}
+      </div>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
